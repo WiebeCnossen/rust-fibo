@@ -1,21 +1,14 @@
 extern crate num;
+mod io;
 
 use num::bigint::BigInt;
-use std::io;
+use io::read_line;
 
 fn fibo(n: u16) -> BigInt {
   (0..n).fold(
     (BigInt::from(0), BigInt::from(1)),
     |(prev, cur), _| { let next = prev + &cur; (cur, next) }
   ).1
-}
-
-fn read_line() -> String {
-  let mut line = String::new();
-  line.clear();
-  io::stdin().read_line(&mut line).ok();
-  line.pop();
-  line
 }
 
 fn main() {
